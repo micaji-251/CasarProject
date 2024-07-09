@@ -5,6 +5,8 @@ import { SwiperParts } from './components/SwiperParts/SwiperParts';
 import { GridItem } from './components/GridTable/GridItem';
 import { PowerPay } from './components/PowerPay/PowerPay';
 import { Footer } from './components/Footer/Footer';
+import app from './firebaseConfig';
+import { getDatabase, ref, get } from 'firebase/database';
 
 export const App = () => {
   const [catItems, setCatItems] = useState([]);
@@ -16,66 +18,85 @@ export const App = () => {
 
   const readCategorias = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/categorias'
-      );
-      const response = await data.json();
-      setCatItems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'categorias');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setCatItems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
   const readMarcas = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/marcas'
-      );
-      const response = await data.json();
-      setMarcaItems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'marcas');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setMarcaItems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const readDiscountProducts = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/descuentosLimitados'
-      );
-      const response = await data.json();
-      setDiscounttems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'descuentosLimitados');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setDiscounttems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const readTelevisores = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/Televisores'
-      );
-      const response = await data.json();
-      setTelevisoresItems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'Televisores');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setTelevisoresItems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const readCelulares = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/Celulares'
-      );
-      const response = await data.json();
-      setCelularesItems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'Celulares');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setCelularesItems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const readLaptops = async () => {
     try {
-      const data = await fetch(
-        'https://casar-db.onrender.com/Laptops'
-      );
-      const response = await data.json();
-      setLaptopItems(response);
+      const data = getDatabase(app);
+      const dbRef = ref(data, 'Laptops');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        setLaptopItems(Object.values(snapshot.val()));
+      } else {
+        console.log('error');
+      }
     } catch (error) {
       console.log(error);
     }
