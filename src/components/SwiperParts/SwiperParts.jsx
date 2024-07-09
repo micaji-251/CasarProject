@@ -39,7 +39,7 @@ export const SwiperParts = ({
           dynamicBullets: true,
           dynamicMainBullets: 2,
         }}
-        className={'mySwiper ' + mySwiper}
+        className={'mySwiperParts ' + mySwiper}
       >
         {catItems &&
           catItems.map((item) => (
