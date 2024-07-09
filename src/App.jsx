@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header/Header';
-import { SwiperComponent } from './components/Swiper/SwiperComponent';
+import { SwiperComponent } from './components/SwiperComponent/SwiperComponent';
 import { SwiperParts } from './components/SwiperParts/SwiperParts';
 import { GridItem } from './components/GridTable/GridItem';
 import { PowerPay } from './components/PowerPay/PowerPay';
